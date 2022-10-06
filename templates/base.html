@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- app info -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+
+    <!-- styling/js from semantic -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  </head>
+
+  <body>
+    <div style="margin-top: 50px" class="ui container">
+      <h1 class="ui center aligned header" style="letter-spacing: 1px">
+        My Todos
+      </h1>
+
+      <!-- form to add new todos, will direct us to add route in app.py -->
+      <form class="ui form" action="/add" method="post">
+        <div class="field">
+          <label>New todo:</label>
+          <div style="display: flex">
+            <input
+              type="text"
+              style="margin-right: 5px"
+              name="title"
+              placeholder="Enter todo here..."
+              title="enter todo"
+            />
+            <button class="ui secondary button" type="submit" title="add todo">
+              Add
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- print out todos in list -->
+      <!-- we're using jinja to access todo_list -->
+      {% for todo in todo_list %}
+      <div class="ui segment" style="background-color: rgb(234, 249, 254)">
+        <p class="ui big header">{{todo.id }} | {{ todo.title }}</p>
+
+        <!-- show correct status of todo -->
+        {% if todo.complete == False %}
+        <span class="ui gray label">Not Complete</span>
+        {% else %}
+        <span class="ui green label">Completed</span>
+        {% endif %}
+
+        <!-- direct user to update/delete route in app.py -->
+        <div style="float: right; position: absolute; right: 10px; top: 10px">
+          <a
+            class="ui blue button"
+            title="toggle status"
+            href="/update/{{ todo.id }}"
+            >Toggle Status</a
+          >
+          <a
+            class="ui red button"
+            title="delete todo"
+            href="/delete/{{ todo.id }}"
+            >Delete</a
+          >
+        </div>
+      </div>
+
+      {% endfor %} {% if todo_list %}
+      <!-- only show clear button if there's at least 1 todo in the list-->
+      <a
+        class="ui inverted red button"
+        style="width: 100%"
+        title="clear todos"
+        href="/delete_all/"
+        >Clear Todo List</a
+      >
+      {% endif %}
+    </div>
+  </body>
+</html>

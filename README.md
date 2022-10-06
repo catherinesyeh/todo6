@@ -1,8 +1,8 @@
 # todo6
-Todo app made with Flask
+Todo app made with Flask: [https://cyeh-todo-flask.herokuapp.com/](https://cyeh-todo-flask.herokuapp.com/)
 
 ## instructions
-Open [webpage](https://todo5.vercel.app/) to start exploring. The app comes preloaded with a few todo items as an example.
+Open [webpage](https://cyeh-todo-flask.herokuapp.com/) to start exploring. The app comes preloaded with a few todo items as an example.
 
 ![Screenshot of todo app](static/screenshot.png)
 

@@ -5,12 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.png') }}"
+    />
 
     <!-- styling/js from semantic -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
     />
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
   </head>
 
@@ -32,7 +38,13 @@
               placeholder="Enter todo here..."
               title="enter todo"
             />
-            <button class="ui secondary button" type="submit" title="add todo">
+            <button
+              class="ui secondary button"
+              type="submit"
+              title="add todo"
+              onmouseenter="this.style.opacity=0.9;"
+              onmouseleave="this.style.opacity=1.0;"
+            >
               Add
             </button>
           </div>
@@ -75,7 +87,7 @@
         class="ui inverted red button"
         style="width: 100%"
         title="clear todos"
-        href="/delete_all/"
+        href="/delete_all"
         >Clear Todo List</a
       >
       {% endif %}

@@ -51,7 +51,7 @@ def delete(todo_id):
     return redirect(url_for("home"))  # reload page
 
 
-@app.route("/delete_all/")  # delete all todos
+@app.route("/delete_all")  # delete all todos
 def delete_all():
     todo_list = Todo.query.all()  # get all todos
     for todo in todo_list:
